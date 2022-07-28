@@ -1,0 +1,22 @@
+CREATE DATABASE db_classificados;
+USE db_classificados;
+
+CREATE TABLE tb_usuarios (
+Id INT NOT NULL PRIMARY KEY,
+Nome VARCHAR(250) NOT NULL,
+Email VARCHAR(250) NOT NULL,
+Senha VARCHAR(100) NOT NULL,
+url_imagem VARCHAR(250)
+);
+
+CREATE TABLE tb_anuncios (
+
+Id INT NOT NULL PRIMARY KEY IDENTITY,
+Titulo VARCHAR(250) NOT NULL,
+Descricao VARCHAR(250) NOT NULL,
+Contato VARCHAR(250) NOT NULL,
+URL_imagem VARCHAR(250) NOT NULL,
+Calendario DATE NOT NULL,
+FK_Autor INT NOT NULL,
+FOREIGN KEY (FK_Autor) REFERENCES tb_usuarios (Id),
+);
