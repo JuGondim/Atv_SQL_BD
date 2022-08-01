@@ -1,0 +1,32 @@
+CREATE DATABASE db_e_comerce;
+
+USE db_e_comerce;
+
+CREATE TABLE tb_usuarios (
+
+Id INT NOT NULL PRIMARY KEY,
+Nome VARCHAR(45) NOT NULL,
+Usuario VARCHAR(45) NOT NULL,
+Senha VARCHAR(100) NOT NULL,
+Documento VARCHAR(45) NOT NULL,
+);
+
+CREATE TABLE tb_produtos (
+
+Id INT NOT NULL PRIMARY KEY IDENTITY,
+Produto VARCHAR(250) NOT NULL,
+Descricao VARCHAR(250) NOT NULL,
+Categoria VARCHAR(250),
+Preco FLOAT NOT NULL,
+Estoque INT NOT NULL,
+url_imagem VARCHAR(100) NOT NULL,
+);
+
+CREATE TABLE tb_compras (
+
+Id INT NOT NULL PRIMARY KEY IDENTITY,
+FK_Usuario INT NOT NULL,
+FK_Produto INT NOT NULL, 
+FOREIGN KEY (FK_Usuario) REFERENCES tb_usuarios (Id),
+FOREIGN KEY (FK_Produto) REFERENCES tb_produtos (Id),
+);
